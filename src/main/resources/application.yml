@@ -23,6 +23,6 @@ captcha:
     names: 宋体,楷体,微软雅黑
   image:
     width: 110
-    height: 40
+    height: 38
   session-key: captcha_code
   char-length: 5

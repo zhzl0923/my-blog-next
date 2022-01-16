@@ -93,6 +93,7 @@ public class CaptchaConfig implements Serializable {
     public DefaultKaptcha getDefaultCaptcha() {
         DefaultKaptcha dk = new DefaultKaptcha();
         Properties properties = new Properties();
+        properties.setProperty("kaptcha.border", "no");
         // 字体颜色
         properties.setProperty("kaptcha.textproducer.font.color", this.getFontColor());
         // 图片宽
