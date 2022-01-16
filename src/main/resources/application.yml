@@ -9,13 +9,20 @@ spring:
     resources:
       static-locations: classpath:/static
   thymeleaf:
-    #??thymeleaf??????
     cache: false
-    #thymeleaf????????,???
     prefix: classpath:/templates/
-    #thymeleaf????????,???
     suffix: .html
 mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
     - classpath*:com/**/mapper/*.xml
+captcha:
+  font:
+    size: 30
+    color: black
+    names: 宋体,楷体,微软雅黑
+  image:
+    width: 110
+    height: 40
+  session-key: captcha_code
+  char-length: 5
