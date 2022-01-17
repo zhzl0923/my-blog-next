@@ -2,6 +2,7 @@ package indi.zhzl.myblognext.config;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
+import indi.zhzl.myblognext.constants.SessionConstant;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,9 +27,6 @@ public class CaptchaConfig implements Serializable {
 
     @Value("${captcha.image.height:'40'}")
     private String captchaImageHeight;
-
-    @Value("${captcha.session-key:'code'}")
-    private String sessionKey;
 
     @Value("${captcha.char-length:'5'}")
     private String charLength;
@@ -65,14 +63,6 @@ public class CaptchaConfig implements Serializable {
         this.fontSize = fontSize;
     }
 
-    public String getSessionKey() {
-        return sessionKey;
-    }
-
-    public void setSessionKey(String sessionKey) {
-        this.sessionKey = sessionKey;
-    }
-
     public String getCharLength() {
         return charLength;
     }
@@ -103,7 +93,7 @@ public class CaptchaConfig implements Serializable {
         // 字体大小
         properties.setProperty("kaptcha.textproducer.font.size", this.getFontSize());
         // session key
-        properties.setProperty("kaptcha.session.key", this.getSessionKey());
+        properties.setProperty("kaptcha.session.key", SessionConstant.CAPTCHA_KEY);
         // 验证码长度
         properties.setProperty("kaptcha.textproducer.char.length", this.getCharLength());
         // 字体

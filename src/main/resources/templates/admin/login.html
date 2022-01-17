@@ -8,63 +8,125 @@
     <link rel="icon" type="image/png" sizes="16x16" th:href="@{/static/favicon-16x16-next.png}">
     <!-- Font Awesome -->
     <link rel="stylesheet" th:href="@{/static/admin/plugins/fontawesome-free/css/all.min.css}">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" th:href="@{/static/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css}">
     <!-- Theme style -->
     <link rel="stylesheet" th:href="@{/static/admin/css/adminlte.min.css}">
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body class="hold-transition login-page text-sm">
-<div class="login-box">
-    <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-            <a href="../../index2.html" class="h3">My Blog Next</a>
-        </div>
-        <div class="card-body">
-            <p class="login-box-msg">后台管理系统</p>
+<body class="text-sm">
+<div class="login-page">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a th:href="@{/admin}" class="h3">My Blog Next</a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">后台管理系统</p>
 
-            <form action="" method="post">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="username" placeholder="用户名">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                <form action="" method="post" id="loginForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="username" placeholder="用户名">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="password" placeholder="密码">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" name="password" placeholder="密码">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="验证码">
-                    <div class="input-group-append ml-5">
-                        <img th:src="@{/admin/captcha}" alt="验证码">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="captcha_code" placeholder="验证码">
+                        <div class="input-group-append ml-5">
+                            <img class="pointer" id="captcha" th:src="@{/admin/captcha}" alt="验证码">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary btn-block">登录</button>
+                    <input type="hidden" th:name="${_csrf.getParameterName()}" th:value="${_csrf.getToken()}">
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col">
+                            <button id="loginButton" type="button" class="btn btn-primary btn-block">登录</button>
+                        </div>
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                </div>
-            </form>
-            <!-- /.social-auth-links -->
+                </form>
+                <!-- /.social-auth-links -->
+            </div>
+            <!-- /.card-body -->
         </div>
-        <!-- /.card-body -->
+        <!-- /.card -->
     </div>
-    <!-- /.card -->
 </div>
-<!-- /.login-box -->
-
 <!-- jQuery -->
 <script th:src="@{/static/admin/plugins/jquery/jquery.min.js}"></script>
 <!-- Bootstrap 4 -->
 <script th:src="@{/static/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- SweetAlert2 -->
+<script th:src="@{/static/admin/plugins/sweetalert2/sweetalert2.min.js}"></script>
 <!-- AdminLTE App -->
 <script th:src="@{/static/admin/js/adminlte.min.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 800
+        });
+        $("#captcha").click((e) => {
+            $(e.target).attr("src", "/admin/captcha?t=" + Date.now())
+        })
+        $("#loginButton").click(function () {
+            let data = {};
+            let value = $('#loginForm').serializeArray();
+            $.each(value, function (index, item) {
+                data[item.name] = item.value;
+            });
+            console.log(data)
+            $.ajax({
+                url: "/admin/sign_in",
+                method: "POST",
+                data: data,
+                success: (res) => {
+                    if (res.code === 200) {
+                        Toast.fire({
+                            icon: 'success',
+                            text: res.message
+                        }).then(function () {
+                            window.location.href = "/admin"
+                        })
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            text: res.message
+                        }).then(function () {
+                            window.location.reload()
+                        })
+                    }
+
+                },
+                error: (res) => {
+                    Toast.fire({
+                        icon: 'error',
+                        text: res.message
+                    }).then(function () {
+                        window.location.reload()
+                    })
+                }
+            })
+        })
+    })
+</script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 package indi.zhzl.myblognext.controller.admin;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
-import indi.zhzl.myblognext.config.CaptchaConfig;
+import indi.zhzl.myblognext.constants.SessionConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,15 +19,13 @@ import java.io.OutputStream;
 public class LoginController {
 
     @Autowired
-    private CaptchaConfig captchaConfig;
-    @Autowired
     private DefaultKaptcha defaultKaptcha;
 
     @GetMapping("/captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String captchaText = defaultKaptcha.createText();
         BufferedImage image = defaultKaptcha.createImage(captchaText);
-        request.getSession().setAttribute(captchaConfig.getSessionKey(), captchaText);
+        request.getSession().setAttribute(SessionConstant.CAPTCHA_KEY, captchaText);
         OutputStream outputStream = null;
         try {
             outputStream = response.getOutputStream();
