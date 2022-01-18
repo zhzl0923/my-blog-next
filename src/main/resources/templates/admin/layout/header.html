@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common_header(title,links)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:replace="${title}">Blog Admin | Log in</title>
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/static/favicon-32x32-next.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/static/favicon-16x16-next.png}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/static/admin/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/static/admin/css/adminlte.min.css}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" th:href="@{/static/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+</html>

@@ -38,7 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/admin/logout")
-                .logoutSuccessUrl("/admin/login");
+                .logoutSuccessUrl("/admin/login")
+                .and()
+                .sessionManagement()
+                .invalidSessionUrl("/admin/login");
         http.addFilterBefore(new CaptchaVerificationFiler(), UsernamePasswordAuthenticationFilter.class);
     }
 }
