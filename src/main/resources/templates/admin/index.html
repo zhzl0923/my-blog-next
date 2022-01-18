@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
-    <!-- Google Font: Source Sans Pro -->
-    <!-- Font Awesome -->
-    <link rel="stylesheet" th:href="@{/static/admin/plugins/fontawesome-free/css/all.min.css}">
-    <!-- Theme style -->
-    <link rel="stylesheet" th:href="@{/static/admin/css/adminlte.min.css}">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" th:href="@{/static/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+<head th:replace="admin/layout/header::common_header(~{::title},~{::links})">
+
+    <title>My Blog Admin | 首页</title>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
