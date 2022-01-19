@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         AuthenticationHandler handler = new AuthenticationHandler();
         http.authorizeRequests()
                 .antMatchers("/admin/captcha", "/admin/login", "/admin/sign_in", "/static/**").permitAll()
-                .antMatchers("/tags/**", "/categories/**", "/archives/**", "/about/**").permitAll()
+                .antMatchers("/", "/tags/**", "/categories/**", "/archives/**", "/about/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
