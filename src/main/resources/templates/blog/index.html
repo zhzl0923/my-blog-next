@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="blog/layout/head::common_head(~{::title},~{})">
-    <title>Hexo</title>
+    <title>My Next Blog | Home</title>
 </head>
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<body class="use-motion">
 <div class="headband"></div>
 <main class="main">
-    <th:block th:replace="blog/layout/header::header"/>
+    <th:block th:replace="blog/layout/header::header(~{::aside})">
+        <aside class="sidebar">
+            <th:block th:replace="blog/layout/aside::aside"/>
+        </aside>
+    </th:block>
     <div class="main-inner index posts-expand">
         <div class="post-block">
-            <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <article  class="post-content" lang="">
+                <span hidden itemprop="publisher" >
                     <meta itemprop="name" content="Hexo">
                 </span>
                 <header class="post-header">
                     <h2 class="post-title" itemprop="name headline">
-                        <a href="/2022/01/19/10/" class="post-title-link" itemprop="url">Hello World</a>
+                        <a th:href="@{/blog/1}" class="post-title-link" itemprop="url">Hello World</a>
                     </h2>
                     <div class="post-meta-container">
                         <div class="post-meta">
@@ -35,7 +39,7 @@
                                     <i class="far fa-folder"></i>
                                 </span>
                                 <span class="post-meta-item-text">分类于</span>
-                                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                <span itemprop="about">
                                     <a href="/categories/Sports/" itemprop="url" rel="index">
                                         <span itemprop="name">Sports</span>
                                     </a>
@@ -55,7 +59,7 @@
                                                 href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
                     <!--noindex-->
                     <div class="post-button">
-                        <a class="btn" href="/2022/01/19/10/#more" rel="contents">
+                        <a class="btn" th:href="@{/blog/1#more}" rel="contents">
                             阅读全文 &raquo;
                         </a>
                     </div>
@@ -68,13 +72,13 @@
             </article>
         </div>
         <div class="post-block">
-            <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <article  class="post-content" lang="">
+                <span hidden itemprop="publisher" >
                     <meta itemprop="name" content="Hexo">
                 </span>
                 <header class="post-header">
                     <h2 class="post-title" itemprop="name headline">
-                        <a href="/2022/01/19/10/" class="post-title-link" itemprop="url">Hello World</a>
+                        <a th:href="@{/blog/1}" class="post-title-link" itemprop="url">Hello World</a>
                     </h2>
                     <div class="post-meta-container">
                         <div class="post-meta">
@@ -94,7 +98,7 @@
                                     <i class="far fa-folder"></i>
                                 </span>
                                 <span class="post-meta-item-text">分类于</span>
-                                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                <span itemprop="about">
                                     <a href="/categories/Sports/" itemprop="url" rel="index">
                                         <span itemprop="name">Sports</span>
                                     </a>
@@ -114,7 +118,7 @@
                                                 href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
                     <!--noindex-->
                     <div class="post-button">
-                        <a class="btn" href="/2022/01/19/10/#more" rel="contents">
+                        <a class="btn" th:href="@{/blog/1#more}" rel="contents">
                             阅读全文 &raquo;
                         </a>
                     </div>
@@ -127,13 +131,13 @@
             </article>
         </div>
         <div class="post-block">
-            <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <article  class="post-content" lang="">
+                <span hidden itemprop="publisher" >
                     <meta itemprop="name" content="Hexo">
                 </span>
                 <header class="post-header">
                     <h2 class="post-title" itemprop="name headline">
-                        <a href="/2022/01/19/10/" class="post-title-link" itemprop="url">Hello World</a>
+                        <a th:href="@{/blog/1}" class="post-title-link" itemprop="url">Hello World</a>
                     </h2>
                     <div class="post-meta-container">
                         <div class="post-meta">
@@ -153,7 +157,7 @@
                                     <i class="far fa-folder"></i>
                                 </span>
                                 <span class="post-meta-item-text">分类于</span>
-                                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                <span itemprop="about">
                                     <a href="/categories/Sports/" itemprop="url" rel="index">
                                         <span itemprop="name">Sports</span>
                                     </a>
@@ -173,7 +177,7 @@
                                                 href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
                     <!--noindex-->
                     <div class="post-button">
-                        <a class="btn" href="/2022/01/19/10/#more" rel="contents">
+                        <a class="btn" th:href="@{/blog/1#more}" rel="contents">
                             阅读全文 &raquo;
                         </a>
                     </div>
@@ -186,13 +190,13 @@
             </article>
         </div>
         <div class="post-block">
-            <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <article  class="post-content" lang="">
+                <span hidden itemprop="publisher" >
                     <meta itemprop="name" content="Hexo">
                 </span>
                 <header class="post-header">
                     <h2 class="post-title" itemprop="name headline">
-                        <a href="/2022/01/19/10/" class="post-title-link" itemprop="url">Hello World</a>
+                        <a th:href="@{/blog/1}" class="post-title-link" itemprop="url">Hello World</a>
                     </h2>
                     <div class="post-meta-container">
                         <div class="post-meta">
@@ -212,7 +216,7 @@
                                     <i class="far fa-folder"></i>
                                 </span>
                                 <span class="post-meta-item-text">分类于</span>
-                                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                <span itemprop="about">
                                     <a href="/categories/Sports/" itemprop="url" rel="index">
                                         <span itemprop="name">Sports</span>
                                     </a>
@@ -232,7 +236,7 @@
                                                 href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
                     <!--noindex-->
                     <div class="post-button">
-                        <a class="btn" href="/2022/01/19/10/#more" rel="contents">
+                        <a class="btn" th:href="@{/blog/1#more}" rel="contents">
                             阅读全文 &raquo;
                         </a>
                     </div>
@@ -245,13 +249,13 @@
             </article>
         </div>
         <div class="post-block">
-            <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <article  class="post-content" lang="">
+                <span hidden itemprop="publisher" >
                     <meta itemprop="name" content="Hexo">
                 </span>
                 <header class="post-header">
                     <h2 class="post-title" itemprop="name headline">
-                        <a href="/2022/01/19/10/" class="post-title-link" itemprop="url">Hello World</a>
+                        <a th:href="@{/blog/1}" class="post-title-link" itemprop="url">Hello World</a>
                     </h2>
                     <div class="post-meta-container">
                         <div class="post-meta">
@@ -271,7 +275,7 @@
                                     <i class="far fa-folder"></i>
                                 </span>
                                 <span class="post-meta-item-text">分类于</span>
-                                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                <span itemprop="about">
                                     <a href="/categories/Sports/" itemprop="url" rel="index">
                                         <span itemprop="name">Sports</span>
                                     </a>
@@ -291,7 +295,7 @@
                                                 href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
                     <!--noindex-->
                     <div class="post-button">
-                        <a class="btn" href="/2022/01/19/10/#more" rel="contents">
+                        <a class="btn" th:href="@{/blog/1#more}" rel="contents">
                             阅读全文 &raquo;
                         </a>
                     </div>
@@ -304,13 +308,13 @@
             </article>
         </div>
         <div class="post-block">
-            <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <article  class="post-content" lang="">
+                <span hidden itemprop="publisher" >
                     <meta itemprop="name" content="Hexo">
                 </span>
                 <header class="post-header">
                     <h2 class="post-title" itemprop="name headline">
-                        <a href="/2022/01/19/10/" class="post-title-link" itemprop="url">Hello World</a>
+                        <a th:href="@{/blog/1}" class="post-title-link" itemprop="url">Hello World</a>
                     </h2>
                     <div class="post-meta-container">
                         <div class="post-meta">
@@ -330,7 +334,7 @@
                                     <i class="far fa-folder"></i>
                                 </span>
                                 <span class="post-meta-item-text">分类于</span>
-                                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                <span itemprop="about">
                                     <a href="/categories/Sports/" itemprop="url" rel="index">
                                         <span itemprop="name">Sports</span>
                                     </a>
@@ -350,7 +354,7 @@
                                                 href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
                     <!--noindex-->
                     <div class="post-button">
-                        <a class="btn" href="/2022/01/19/10/#more" rel="contents">
+                        <a class="btn" th:href="@{/blog/1#more}" rel="contents">
                             阅读全文 &raquo;
                         </a>
                     </div>
@@ -363,13 +367,13 @@
             </article>
         </div>
         <div class="post-block">
-            <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <article  class="post-content" lang="">
+                <span hidden itemprop="publisher" >
                     <meta itemprop="name" content="Hexo">
                 </span>
                 <header class="post-header">
                     <h2 class="post-title" itemprop="name headline">
-                        <a href="/2022/01/19/10/" class="post-title-link" itemprop="url">Hello World</a>
+                        <a th:href="@{/blog/1}" class="post-title-link" itemprop="url">Hello World</a>
                     </h2>
                     <div class="post-meta-container">
                         <div class="post-meta">
@@ -389,7 +393,7 @@
                                     <i class="far fa-folder"></i>
                                 </span>
                                 <span class="post-meta-item-text">分类于</span>
-                                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                <span itemprop="about">
                                     <a href="/categories/Sports/" itemprop="url" rel="index">
                                         <span itemprop="name">Sports</span>
                                     </a>
@@ -409,7 +413,7 @@
                                                 href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
                     <!--noindex-->
                     <div class="post-button">
-                        <a class="btn" href="/2022/01/19/10/#more" rel="contents">
+                        <a class="btn" th:href="@{/blog/1#more}" rel="contents">
                             阅读全文 &raquo;
                         </a>
                     </div>
@@ -422,13 +426,13 @@
             </article>
         </div>
         <div class="post-block">
-            <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <article  class="post-content" lang="">
+                <span hidden itemprop="publisher" >
                     <meta itemprop="name" content="Hexo">
                 </span>
                 <header class="post-header">
                     <h2 class="post-title" itemprop="name headline">
-                        <a href="/2022/01/19/10/" class="post-title-link" itemprop="url">Hello World</a>
+                        <a th:href="@{/blog/1}" class="post-title-link" itemprop="url">Hello World</a>
                     </h2>
                     <div class="post-meta-container">
                         <div class="post-meta">
@@ -448,7 +452,7 @@
                                     <i class="far fa-folder"></i>
                                 </span>
                                 <span class="post-meta-item-text">分类于</span>
-                                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                <span itemprop="about">
                                     <a href="/categories/Sports/" itemprop="url" rel="index">
                                         <span itemprop="name">Sports</span>
                                     </a>
@@ -468,7 +472,7 @@
                                                 href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
                     <!--noindex-->
                     <div class="post-button">
-                        <a class="btn" href="/2022/01/19/10/#more" rel="contents">
+                        <a class="btn" th:href="@{/blog/1#more}" rel="contents">
                             阅读全文 &raquo;
                         </a>
                     </div>
@@ -489,7 +493,7 @@
         </nav>
     </div>
 </main>
-<footer th:replace="blog/layout/footer::footer"/>
+<footer th:replace="blog/layout/footer::footer"></footer>
 <th:block th:replace="blog/layout/script::common_script"/>
 </body>
 </html>

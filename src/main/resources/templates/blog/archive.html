@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/layout/head::common_head(~{::title},~{})">
+    <title>My Next Blog | Tags</title>
+</head>
+<body class="use-motion">
+<div class="headband"></div>
+<main class="main">
+    <th:block th:replace="blog/layout/header::header(~{::aside})">
+        <aside class="sidebar">
+            <th:block th:replace="blog/layout/aside::aside"/>
+        </aside>
+    </th:block>
+    <div class="main-inner archive posts-collapse">
+        <div class="post-block">
+            <div class="post-content">
+                <div class="collection-title">
+                    <span class="collection-header">嗯..! 目前共计 11 篇日志。 继续努力。</span>
+                </div>
+                <div class="collection-year">
+                    <span class="collection-header">2022</span>
+                </div>
+                <article>
+                    <header class="post-header">
+                        <div class="post-meta-container">
+                            <time itemprop="dateCreated"
+                                  datetime="2022-01-19T13:06:14+08:00"
+                                  content="2022-01-19">
+                                01-19
+                            </time>
+                        </div>
+                        <div class="post-title">
+                            <a class="post-title-link" th:href="@{/blog/1}" itemprop="url">
+                                <span itemprop="name">Hello World</span>
+                            </a>
+                        </div>
+                    </header>
+                </article>
+                <article>
+                    <header class="post-header">
+                        <div class="post-meta-container">
+                            <time itemprop="dateCreated"
+                                  datetime="2022-01-19T13:06:14+08:00"
+                                  content="2022-01-19">
+                                01-19
+                            </time>
+                        </div>
+                        <div class="post-title">
+                            <a class="post-title-link" th:href="@{/blog/1}" itemprop="url">
+                                <span itemprop="name">Hello World</span>
+                            </a>
+                        </div>
+                    </header>
+                </article>
+                <article>
+                    <header class="post-header">
+                        <div class="post-meta-container">
+                            <time itemprop="dateCreated"
+                                  datetime="2022-01-19T13:06:14+08:00"
+                                  content="2022-01-19">
+                                01-19
+                            </time>
+                        </div>
+                        <div class="post-title">
+                            <a class="post-title-link" th:href="@{/blog/1}" itemprop="url">
+                                <span itemprop="name">Hello World</span>
+                            </a>
+                        </div>
+                    </header>
+                </article>
+                <article>
+                    <header class="post-header">
+                        <div class="post-meta-container">
+                            <time itemprop="dateCreated"
+                                  datetime="2022-01-19T13:06:14+08:00"
+                                  content="2022-01-19">
+                                01-19
+                            </time>
+                        </div>
+                        <div class="post-title">
+                            <a class="post-title-link" th:href="@{/blog/1}" itemprop="url">
+                                <span itemprop="name">Hello World</span>
+                            </a>
+                        </div>
+                    </header>
+                </article>
+                <article>
+                    <header class="post-header">
+                        <div class="post-meta-container">
+                            <time itemprop="dateCreated"
+                                  datetime="2022-01-19T13:06:14+08:00"
+                                  content="2022-01-19">
+                                01-19
+                            </time>
+                        </div>
+                        <div class="post-title">
+                            <a class="post-title-link" th:href="@{/blog/1}" itemprop="url">
+                                <span itemprop="name">Hello World</span>
+                            </a>
+                        </div>
+                    </header>
+                </article>
+                <article>
+                    <header class="post-header">
+                        <div class="post-meta-container">
+                            <time itemprop="dateCreated"
+                                  datetime="2022-01-19T13:06:14+08:00"
+                                  content="2022-01-19">
+                                01-19
+                            </time>
+                        </div>
+                        <div class="post-title">
+                            <a class="post-title-link" th:href="@{/blog/1}" itemprop="url">
+                                <span itemprop="name">Hello World</span>
+                            </a>
+                        </div>
+                    </header>
+                </article>
+                <article>
+                    <header class="post-header">
+                        <div class="post-meta-container">
+                            <time itemprop="dateCreated"
+                                  datetime="2022-01-19T13:06:14+08:00"
+                                  content="2022-01-19">
+                                01-19
+                            </time>
+                        </div>
+                        <div class="post-title">
+                            <a class="post-title-link" th:href="@{/blog/1}" itemprop="url">
+                                <span itemprop="name">Hello World</span>
+                            </a>
+                        </div>
+                    </header>
+                </article>
+                <article>
+                    <header class="post-header">
+                        <div class="post-meta-container">
+                            <time itemprop="dateCreated"
+                                  datetime="2022-01-19T13:06:14+08:00"
+                                  content="2022-01-19">
+                                01-19
+                            </time>
+                        </div>
+                        <div class="post-title">
+                            <a class="post-title-link" th:href="@{/blog/1}" itemprop="url">
+                                <span itemprop="name">Hello World</span>
+                            </a>
+                        </div>
+                    </header>
+                </article>
+            </div>
+        </div>
+        <nav class="pagination">
+            <span class="page-number current">1</span>
+            <a class="page-number" href="/archives/page/2/">2</a>
+            <a class="extend next" rel="next" href="/archives/page/2/">
+                <i class="fa fa-angle-right" aria-label="下一页"></i>
+            </a>
+        </nav>
+    </div>
+</main>
+<footer th:replace="blog/layout/footer::footer"></footer>
+<th:block th:replace="blog/layout/script::common_script"/>
+</body>
+</html>

@@ -1,4 +1,5 @@
 /* global CONFIG */
+/* global CONFIG */
 
 document.addEventListener('DOMContentLoaded', () => {
 

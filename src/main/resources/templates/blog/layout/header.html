@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="header">
+<th:block th:fragment="header(aside)">
     <header class="header">
         <div class="header-inner">
             <div class="site-brand-container">
@@ -36,7 +36,13 @@
                 </ul>
             </nav>
         </div>
-        <th:block th:replace="blog/layout/aside::aside"/>
+        <div class="toggle sidebar-toggle" role="button">
+            <span class="toggle-line"></span>
+            <span class="toggle-line"></span>
+            <span class="toggle-line"></span>
+        </div>
+        <th:block th:replace="${aside}"/>
+        <div class="sidebar-dimmer"></div>
     </header>
     <div class="back-to-top" role="button" aria-label="返回顶部">
         <i class="fa fa-arrow-up"></i>
