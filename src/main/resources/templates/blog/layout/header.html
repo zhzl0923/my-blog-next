@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="header">
+    <header class="header">
+        <div class="header-inner">
+            <div class="site-brand-container">
+                <div class="site-nav-toggle">
+                    <div class="toggle" aria-label="切换导航栏" role="button">
+                        <span class="toggle-line"></span>
+                        <span class="toggle-line"></span>
+                        <span class="toggle-line"></span>
+                    </div>
+                </div>
+                <div class="site-meta">
+                    <a href="/" class="brand" rel="start">
+                        <i class="logo-line"></i>
+                        <h1 class="site-title">Hexo</h1>
+                        <i class="logo-line"></i>
+                    </a>
+                </div>
+                <div class="site-nav-right">
+                    <div class="toggle popup-trigger">
+                    </div>
+                </div>
+            </div>
+            <nav class="site-nav">
+                <ul class="main-menu menu">
+                    <li class="menu-item menu-item-home"><a href="/" rel="section"><i
+                            class="fa fa-home fa-fw"></i>首页</a></li>
+                    <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+                    </li>
+                    <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i
+                            class="fa fa-th fa-fw"></i>分类</a></li>
+                    <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i
+                            class="fa fa-archive fa-fw"></i>归档</a></li>
+                </ul>
+            </nav>
+        </div>
+        <th:block th:replace="blog/layout/aside::aside"/>
+    </header>
+    <div class="back-to-top" role="button" aria-label="返回顶部">
+        <i class="fa fa-arrow-up"></i>
+        <span>0%</span>
+    </div>
+    <noscript>
+        <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+    </noscript>
+</th:block>
+</html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="common_header(title,links)">
+<head th:fragment="common_head(title,links)">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title th:replace="${title}">Blog Admin | Log in</title>
@@ -12,6 +12,7 @@
     <link rel="stylesheet" th:href="@{/static/admin/css/adminlte.min.css}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" th:href="@{/static/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+    <th:block th:replace="${links}" />
     <style>
         .pointer {
             cursor: pointer;
