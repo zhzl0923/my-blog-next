@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh"  xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <body>
 <th:block th:fragment="common_script">
     <script th:src="@{/static/admin/plugins/jquery/jquery.min.js}"></script>
@@ -15,6 +15,18 @@
     <script th:src="@{/static/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
     <!-- AdminLTE App -->
     <script th:src="@{/static/admin/js/adminlte.js}"></script>
+    <script type="text/javascript">
+        $(function () {
+            var requestURI = "[[${#request.getRequestURI()}]]";
+            var menus = $(".sidebar .nav-link");
+            for (let index = 0; index < menus.length; index++) {
+                const elem = menus[index];
+                if (requestURI === $(elem).attr("href")){
+                    $(elem).addClass("active")
+                }
+            }
+        })
+    </script>
 </th:block>
 </body>
 </html>
