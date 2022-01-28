@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout/head::common_head(~{::title},~{::link})">
+    <title>My Blog Admin | 首页</title>
+    <link rel="stylesheet" th:href="@{/static/admin/plugins/kkpager/css/kkpager_orange.css}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav th:replace="admin/layout/navbar::navbar"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="admin/layout/sidebar::sidebar"></aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="card card-outline card-primary">
+                <div class="card-header">
+                    <button id="addTag" class="btn btn-primary btn-sm">添加标签</button>
+                </div>
+                <!-- ./card-header -->
+                <div class="card-body">
+                    <table class="table table-bordered table-hover text-center">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Reason</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            <td>183</td>
+                            <td>John Doe</td>
+                            <td>11-7-2014</td>
+                            <td>Approved</td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                        <tr data-widget="expandable-table" aria-expanded="true">
+                            <td>219</td>
+                            <td>Alexander Pierce</td>
+                            <td>11-7-2014</td>
+                            <td>Pending</td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                        <tr data-widget="expandable-table" aria-expanded="true">
+                            <td>657</td>
+                            <td>Alexander Pierce</td>
+                            <td>11-7-2014</td>
+                            <td>Approved</td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            <td>175</td>
+                            <td>Mike Doe</td>
+                            <td>11-7-2014</td>
+                            <td>Denied</td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            <td>134</td>
+                            <td>Jim Doe</td>
+                            <td>11-7-2014</td>
+                            <td>Approved</td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            <td>494</td>
+                            <td>Victoria Doe</td>
+                            <td>11-7-2014</td>
+                            <td>Pending</td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            <td>832</td>
+                            <td>Michael Doe</td>
+                            <td>11-7-2014</td>
+                            <td>Approved</td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            <td>982</td>
+                            <td>Rocky Doe</td>
+                            <td>11-7-2014</td>
+                            <td>Denied</td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <div id="kkpager"></div>
+                </div>
+            </div>
+            <!-- ./col -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer th:replace="admin/layout/footer::footer"></footer>
+
+    <!-- Control Sidebar -->
+
+    <!-- /.control-sidebar -->
+</div>
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<!-- ./wrapper -->
+<th:block th:replace="/admin/layout/script::common_script"/>
+<script th:src="@{/static/admin/plugins/kkpager/js/kkpager.min.js}"></script>
+<script type="text/javascript">
+    //init
+    $(function () {
+        var totalPage = 10;
+        var totalRecords = 390;
+        var pageNo = 1;
+        //生成分页
+        //有些参数是可选的，比如lang，若不传有默认值
+        kkpager.generPageHtml({
+            pno: pageNo,
+            //总页码
+            total: totalPage,
+            //总数据条数
+            totalRecords: totalRecords,
+            mode: 'click',//默认值是link，可选link或者click
+            click: function (n) {
+                this.selectPage(n);
+                return false;
+            }
+        });
+
+        $("#addTag").click(() => {
+            $(".modal-content").load("/admin/tag/add", function () {
+                $(".modal").modal("show")
+            })
+        })
+
+    });
+</script>
+</body>
+</html>

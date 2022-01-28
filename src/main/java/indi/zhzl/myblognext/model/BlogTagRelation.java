@@ -3,35 +3,32 @@ package indi.zhzl.myblognext.model;
 import java.io.Serializable;
 
 public class BlogTagRelation implements Serializable {
-    private Integer id;
-
-    private Integer blogArticleId;
-
-    private Integer blogTagId;
-
     private static final long serialVersionUID = 1L;
+    private Long id;
+    private Long blogArticleId;
+    private Long blogTagId;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getBlogArticleId() {
+    public Long getBlogArticleId() {
         return blogArticleId;
     }
 
-    public void setBlogArticleId(Integer blogArticleId) {
+    public void setBlogArticleId(Long blogArticleId) {
         this.blogArticleId = blogArticleId;
     }
 
-    public Integer getBlogTagId() {
+    public Long getBlogTagId() {
         return blogTagId;
     }
 
-    public void setBlogTagId(Integer blogTagId) {
+    public void setBlogTagId(Long blogTagId) {
         this.blogTagId = blogTagId;
     }
 

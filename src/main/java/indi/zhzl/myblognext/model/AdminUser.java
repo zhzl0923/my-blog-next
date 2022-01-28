@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Date;
 
 public class AdminUser implements Serializable, UserDetails {
-    private Integer id;
+    private Long id;
 
     private String username;
 
@@ -24,11 +24,11 @@ public class AdminUser implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

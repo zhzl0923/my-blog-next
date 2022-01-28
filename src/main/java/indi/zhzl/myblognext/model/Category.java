@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Category implements Serializable {
-    private Integer id;
+    private Long id;
 
-    private Integer parentId;
+    private Long parentId;
 
     private String categoryName;
 
@@ -18,19 +18,19 @@ public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(Integer parentId) {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 

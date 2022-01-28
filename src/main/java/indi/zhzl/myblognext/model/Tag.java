@@ -1,24 +1,20 @@
 package indi.zhzl.myblognext.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Tag implements Serializable {
-    private Integer id;
-
-    private String tagName;
-
-    private Date createTime;
-
-    private Date updateTime;
-
     private static final long serialVersionUID = 1L;
+    private Long id;
+    private String tagName;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -30,19 +26,19 @@ public class Tag implements Serializable {
         this.tagName = tagName;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 

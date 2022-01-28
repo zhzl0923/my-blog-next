@@ -93,7 +93,6 @@
             $.each(value, function (index, item) {
                 data[item.name] = item.value;
             });
-            console.log(data)
             $.ajax({
                 url: "/admin/sign_in",
                 method: "POST",

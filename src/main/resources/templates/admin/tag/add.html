@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<div class="card mb-0">
+    <div class="card-header">
+        <h3 class="card-title">添加标签</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <div class="card-body">
+        <form>
+
+            <div class="form-group">
+                <label for="tag">标签名称</label>
+                <input type="email" class="form-control" name="tag_name" id="tag" placeholder="标签名称">
+            </div>
+            <div class="form-group">
+                <button type="button" id="createTag" class="btn btn-primary">保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 800
+        });
+        $("#createTag").click(() => {
+            const tagName = $("input[name='tag_name']").val()
+            const _csrf = "[[${_csrf.getToken()}]]"
+            $.ajax({
+                url: "/admin/tag/create",
+                method: "post",
+                data: {tag_name: tagName, _csrf: _csrf},
+                success: (res) => {
+                    if (res.code === 200) {
+                        Toast.fire({
+                            icon: 'success',
+                            text: res.message
+                        }).then(function () {
+                            $(".modal").modal("hide")
+                            window.location.reload()
+                        })
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            text: res.message
+                        }).then(function () {
+                            $(".modal").modal("hide")
+                            window.location.reload()
+                        })
+                    }
+
+                },
+                error: (res) => {
+                    Toast.fire({
+                        icon: 'error',
+                        text: res.message
+                    }).then(function () {
+                        $(".modal").modal("hide")
+                        window.location.reload()
+                    })
+                }
+            })
+        })
+    })
+</script>
+</html>
