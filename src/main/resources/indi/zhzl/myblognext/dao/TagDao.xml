@@ -10,7 +10,34 @@
     <sql id="Base_Column_List">
         id, tag_name, create_time, update_time
     </sql>
-    <insert id="insert" parameterType="indi.zhzl.myblognext.model.Tag" >
-        insert into tag ( tag_name, create_time, update_time) VALUE (#{tagName},#{createTime},#{updateTime})
+    <insert id="insert" parameterType="indi.zhzl.myblognext.model.Tag">
+        insert into tag (tag_name, create_time, update_time) VALUE (#{tagName}, #{createTime}, #{updateTime})
     </insert>
+    <update id="updateTagById">
+        update tag
+        set tag_name=#{tagName}
+        where id = #{tagId}
+    </update>
+    <delete id="deleteTagById">
+        delete
+        from tag
+        where id = #{tagId}
+    </delete>
+    <select id="list" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tag
+        <if test="queryParam.tagName!=null">
+            where
+            tag_name LIKE concat('%',#{queryParam.tagName},'%');
+        </if>
+        order by id desc
+    </select>
+    <select id="getOneByTagId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tag
+        where id = #{tagId}
+    </select>
+
 </mapper>
