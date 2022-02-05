@@ -22,50 +22,11 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 800
-        });
         $("#updateTag").click(() => {
             const tagName = $("input[name='tag_name']").val()
             const tagId = $("input[name='tag_id']").val()
             const _csrf = "[[${_csrf.getToken()}]]"
-            $.ajax({
-                url: "/admin/tag/update",
-                method: "post",
-                data: {tag_id: tagId, tag_name: tagName, _csrf: _csrf},
-                success: (res) => {
-                    if (res.code === 200) {
-                        Toast.fire({
-                            icon: 'success',
-                            text: res.message
-                        }).then(function () {
-                            $(".modal").modal("hide")
-                            window.location.reload()
-                        })
-                    } else {
-                        Toast.fire({
-                            icon: 'error',
-                            text: res.message
-                        }).then(function () {
-                            $(".modal").modal("hide")
-                            window.location.reload()
-                        })
-                    }
-
-                },
-                error: (res) => {
-                    Toast.fire({
-                        icon: 'error',
-                        text: res.message
-                    }).then(function () {
-                        $(".modal").modal("hide")
-                        window.location.reload()
-                    })
-                }
-            })
+            request("/admin/tag/create", "post", {tag_id: tagId, tag_name: tagName, _csrf: _csrf})
         })
     })
 </script>

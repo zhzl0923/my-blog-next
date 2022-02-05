@@ -58,7 +58,6 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <div id="kkpager"></div>
                 </div>
             </div>
             <!-- ./col -->
@@ -115,62 +114,9 @@
             })
         })
         $(".del-tag").click(function () {
-            Swal.fire({
-                text: "是否要删除此数据?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '是',
-                cancelButtonText: '否'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    const _csrf = "[[${_csrf.getToken()}]]"
-                    const id = $(this).data("id")
-                    $.ajax({
-                        url: "/admin/tag/delete",
-                        method: "post",
-                        data: {tag_id: id, _csrf: _csrf},
-                        success: (res) => {
-                            if (res.code === 200) {
-                                Swal.fire({
-                                    text: res.message,
-                                    icon: "success",
-                                    showCancelButton: false,
-                                    showCloseButton: false,
-                                    showConfirmButton: false,
-                                    timer: 800
-                                }).then(() => {
-                                    window.location.reload()
-                                })
-                            } else {
-                                Swal.fire({
-                                    text: res.message,
-                                    icon: "error",
-                                    showCancelButton: false,
-                                    showCloseButton: false,
-                                    showConfirmButton: false,
-                                    timer: 800
-                                }).then(() => {
-                                    window.location.reload()
-                                })
-                            }
-                        },
-                        error: (res) => {
-                            Swal.fire({
-                                text: res.message,
-                                icon: "error",
-                                showCancelButton: false,
-                                showCloseButton: false,
-                                showConfirmButton: false,
-                                timer: 800
-                            }).then(() => {
-                                window.location.reload()
-                            })
-                        }
-                    })
-                }
-            })
+            const _csrf = "[[${_csrf.getToken()}]]"
+            const id = $(this).data("id")
+            deleteAlert("/admin/tag/delete", "post", {_csrf: _csrf, tag_id: id})
         })
     });
 </script>

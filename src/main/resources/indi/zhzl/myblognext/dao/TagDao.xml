@@ -7,9 +7,6 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
-    <sql id="Base_Column_List">
-        id, tag_name, create_time, update_time
-    </sql>
     <insert id="insert" parameterType="indi.zhzl.myblognext.model.Tag">
         insert into tag (tag_name, create_time, update_time) VALUE (#{tagName}, #{createTime}, #{updateTime})
     </insert>
@@ -25,7 +22,7 @@
     </delete>
     <select id="list" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>
+        id, tag_name, create_time, update_time
         from tag
         <if test="queryParam.tagName!=null">
             where
@@ -34,8 +31,10 @@
         order by id desc
     </select>
     <select id="getOneByTagId" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
+        select id,
+               tag_name,
+               create_time,
+               update_time
         from tag
         where id = #{tagId}
     </select>

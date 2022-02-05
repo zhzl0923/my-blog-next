@@ -1,9 +1,16 @@
 package indi.zhzl.myblognext.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Category implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long id;
 
     private Long parentId;
@@ -12,11 +19,15 @@ public class Category implements Serializable {
 
     private Integer blogCount;
 
-    private Date createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime createTime;
 
-    private Date updateTime;
-
-    private static final long serialVersionUID = 1L;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime updateTime;
 
     public Long getId() {
         return id;
@@ -50,36 +61,33 @@ public class Category implements Serializable {
         this.blogCount = blogCount;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", parentId=").append(parentId);
-        sb.append(", categoryName=").append(categoryName);
-        sb.append(", blogCount=").append(blogCount);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return " [" +
+                "Hash = " + hashCode() +
+                ", id=" + id +
+                ", parentId=" + parentId +
+                ", categoryName=" + categoryName +
+                ", blogCount=" + blogCount +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", serialVersionUID=" + serialVersionUID +
+                "]";
     }
 }

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout/head::common_head(~{::title},~{})">
+    <title>My Blog Admin | 首页</title>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav th:replace="admin/layout/navbar::navbar"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="admin/layout/sidebar::sidebar"></aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="card card-outline card-primary">
+                <div class="card-header">
+                    <button id="addCategory" class="btn btn-primary btn-sm">添加分类</button>
+                </div>
+                <!-- ./card-header -->
+                <div class="card-body">
+                    <table class="table table-hover table-bordered user-select-none">
+                        <tbody>
+                        <th:block th:each="category : ${categories}">
+                            <tr th:attr="data-widget=${category.children.size()>0} ? 'expandable-table' : '',aria-expanded=${category.children.size()>0} ? 'false' : ''">
+                                <td>
+                                    <i th:if="${category.children.size()} &gt; 0"
+                                       class="expandable-table-caret fas fa-caret-right fa-fw"></i>
+                                    [[${category.categoryName}]]
+                                    <div class="float-right">
+                                        <button th:data-id="${category.id}"
+                                                class="btn btn-success btn-xs edit-category">
+                                            <i class="fa fa-edit"></i>
+                                            修改
+                                        </button>
+                                        <button th:data-id="${category.id}" type="button"
+                                                class="btn btn-danger btn-xs del-category">
+                                            <i class="fa fa-trash"></i>
+                                            删除
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr th:if="${category.children.size()} &gt; 0" class="expandable-body">
+                                <td>
+                                    <div class="p-0">
+                                        <table class="table table-hover table-bordered user-select-none">
+                                            <tbody>
+                                            <th:block th:each="subCategory: ${category.children}">
+                                                <tr th:attr="data-widget=${subCategory.children.size()>0} ? 'expandable-table' : '',aria-expanded=${subCategory.children.size()>0} ?'false':''">
+                                                    <td>
+                                                        <i th:if="${subCategory.children.size()} &gt; 0"
+                                                           class="expandable-table-caret fas fa-caret-right fa-fw"></i>
+                                                        [[${subCategory.categoryName}]]
+                                                        <div class="float-right">
+                                                            <button th:data-id="${subCategory.id}"
+                                                                    class="btn btn-success btn-xs edit-category">
+                                                                <i class="fa fa-edit"></i>
+                                                                修改
+                                                            </button>
+                                                            <button th:data-id="${subCategory.id}" type="button"
+                                                                    class="btn btn-danger btn-xs del-category">
+                                                                <i class="fa fa-trash"></i>
+                                                                删除
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr th:if="${subCategory.children.size()} &gt; 0"
+                                                    class="expandable-body">
+                                                    <td>
+                                                        <div class="p-0">
+                                                            <table class="table table-hover table-bordered user-select-none">
+                                                                <tbody>
+                                                                <tr th:each="childrenCategory:${subCategory.children}">
+                                                                    <td>
+                                                                        [[${childrenCategory.categoryName}]]
+                                                                        <div class="float-right">
+                                                                            <button th:data-id="${childrenCategory.id}"
+                                                                                    class="btn btn-success btn-xs edit-category">
+                                                                                <i class="fa fa-edit"></i>
+                                                                                修改
+                                                                            </button>
+                                                                            <button th:data-id="${childrenCategory.id}"
+                                                                                    type="button"
+                                                                                    class="btn btn-danger btn-xs del-category">
+                                                                                <i class="fa fa-trash"></i>
+                                                                                删除
+                                                                            </button>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </th:block>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- ./col -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer th:replace="admin/layout/footer::footer"></footer>
+
+    <!-- Control Sidebar -->
+
+    <!-- /.control-sidebar -->
+</div>
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<!-- ./wrapper -->
+<th:block th:replace="/admin/layout/script::common_script"/>
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#addCategory").click(() => {
+            $(".modal-content").load("/admin/category/add", function () {
+                $(".modal").modal("show")
+            })
+        })
+
+        $(".del-category").click(function () {
+            const _csrf = "[[${_csrf.getToken()}]]"
+            const id = $(this).data("id")
+            deleteAlert("/admin/category/delete", "post", {_csrf: _csrf, category_id: id})
+        })
+
+        $(".edit-category").click(function () {
+            const categoryId = $(this).data("id")
+            $(".modal-content").load("/admin/category/edit/" + categoryId, function () {
+                $(".modal").modal("show")
+            })
+        })
+    })
+</script>
+</body>
+</html>

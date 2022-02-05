@@ -17,13 +17,15 @@
     <script th:src="@{/static/admin/plugins/sweetalert2/sweetalert2.min.js}"></script>
     <!-- AdminLTE App -->
     <script th:src="@{/static/admin/js/adminlte.js}"></script>
+    <script th:src="@{/static/admin/js/alert.js}"></script>
+    <script th:src="@{/static/admin/js/request.js}"></script>
     <script type="text/javascript">
         $(function () {
             var requestURI = "[[${#request.getRequestURI()}]]";
             var menus = $(".sidebar .nav-link");
             for (let index = 0; index < menus.length; index++) {
                 const elem = menus[index];
-                if (requestURI === $(elem).attr("href")){
+                if (requestURI === $(elem).attr("href")) {
                     $(elem).addClass("active")
                 }
             }
