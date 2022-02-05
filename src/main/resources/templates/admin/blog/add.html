@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout/head::common_head(~{::title},~{::link})">
+    <title>My Blog Admin | 发布博客</title>
+    <link rel="stylesheet" th:href="@{/static/admin/plugins/editor-md/css/editormd.css}">
+    <!--    select2-->
+    <link rel="stylesheet" th:href="@{/static/admin/plugins/select2/css/select2.min.css}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav th:replace="admin/layout/navbar::navbar"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="admin/layout/sidebar::sidebar"></aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- Main content -->
+        <section class="content">
+            <div class="card card-primary m-3">
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="title">文章标题</label>
+                            <input type="text" name="title" class="form-control" id="title"
+                                   placeholder="请输入文章标题...">
+                        </div>
+                        <div class="form-group">
+                            <label for="intro">文章简介</label>
+                            <input type="text" name="intro" class="form-control" id="intro"
+                                   placeholder="请输入文章简介...">
+                        </div>
+                        <div class="form-group">
+                            <label>文章分类</label>
+                            <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">Alabama</option>
+                                <option>Alaska</option>
+                                <option>California</option>
+                                <option>Delaware</option>
+                                <option>Tennessee</option>
+                                <option>Texas</option>
+                                <option>Washington</option>
+                            </select>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label>文章标签</label>
+                            <select class="select2" multiple="multiple" data-placeholder="Select a State"
+                                    style="width: 100%;">
+                                <option>Alabama</option>
+                                <option>Alaska</option>
+                                <option>California</option>
+                                <option>Delaware</option>
+                                <option>Tennessee</option>
+                                <option>Texas</option>
+                                <option>Washington</option>
+                            </select>
+                        </div>
+                        <div id="editor">
+                            <textarea style="display:none;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="views">浏览量</label>
+                            <input type="number" min="0" name="views" class="form-control" id="views"
+                                   placeholder="请输入浏览量...">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer th:replace="admin/layout/footer::footer"></footer>
+
+    <!-- Control Sidebar -->
+
+    <!-- /.control-sidebar -->
+</div>
+
+<!-- ./wrapper -->
+<th:block th:replace="/admin/layout/script::common_script"/>
+<script th:src="@{/static/admin/plugins/editor-md/editormd.min.js}"></script>
+<script th:src="@{/static/admin/plugins/select2/js/select2.full.min.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+        editormd("editor", {
+            width: "100%",
+            height: 640,
+            markdown: "",
+            path: '/static/admin/plugins/editor-md/lib/',
+            //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为 true
+            //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为 true
+            //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为 true
+            //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为 0.1
+            //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为 #fff
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "/admin/blog/upload_image",
+            /*
+             上传的后台只需要返回一个 JSON 数据，结构如下：
+             {
+                success : 0 | 1,           // 0 表示上传失败，1 表示上传成功
+                message : "提示的信息，上传成功或上传失败及错误信息等。",
+                url     : "图片地址"        // 上传成功时才返回
+             }
+             */
+        });
+    });
+</script>
+
+</body>
+</html>

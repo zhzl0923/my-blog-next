@@ -33,3 +33,4 @@ captcha:
 logging:
   level:
     indi.zhzl.myblognext.dao: debug
+upload-path: /static/upload

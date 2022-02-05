@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         AuthenticationHandler handler = new AuthenticationHandler();
         http.authorizeRequests()
                 .antMatchers("/admin/captcha", "/admin/login", "/admin/sign_in", "/static/**").permitAll()
-                .antMatchers("/", "/blog/**","/tags/**", "/categories/**", "/archives/**", "/about/**").permitAll()
+                .antMatchers("/", "/blog/**", "/tags/**", "/categories/**", "/archives/**", "/about/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -41,7 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/admin/login")
                 .and()
                 .sessionManagement()
-                .invalidSessionUrl("/admin/login");
+                .invalidSessionUrl("/admin/login")
+                .and().csrf().ignoringAntMatchers("/admin/blog/upload_image")
+                .and().headers().frameOptions().sameOrigin();
         http.addFilterBefore(new CaptchaVerificationFiler(), UsernamePasswordAuthenticationFilter.class);
     }
 }
